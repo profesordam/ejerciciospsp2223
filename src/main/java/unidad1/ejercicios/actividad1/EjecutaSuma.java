@@ -2,16 +2,20 @@ package unidad1.ejercicios.actividad1;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 
 public class EjecutaSuma {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		Process process = Runtime.getRuntime().exec("java -classpath target/classes unidad1.ejercicios.actividad1.Suma");
-		try (OutputStream os = process.getOutputStream()) {
-			os.write("1\n2\n".getBytes());
-			os.flush();
+		try (PrintWriter pw = new PrintWriter(new OutputStreamWriter(process.getOutputStream()), true)) {
+			pw.println("1\n2");
 		}
+//		try (OutputStream os = process.getOutputStream()) {
+//			os.write("1\n2\n".getBytes());
+//			os.flush();
+//		}
 		int estado = process.waitFor();
 
 		if (estado != 0)
