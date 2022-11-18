@@ -1,24 +1,16 @@
 package unidad2.ejercicios.secuencias;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
 
-	public static void main(String[] args) {
-		ControlTurno control = new ControlTurno();
-		Scanner in = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("Patrón: ");
-		Scanner patron = new Scanner(in.nextLine());
-		while (patron.hasNext(".+")) {
-			char c = patron.skip("\\p{Alpha}").match().group().charAt(0);
-			int r = Integer.parseInt(patron.skip("\\d+").match().group());
-			Turno t = new Turno(c, r);
-			control.addTurno(t);
-			System.out.println(t);
-		}
-		System.out.println("patrón escaneado");
-		patron.close();
-		in.close();
+		ControlTurno control = new ControlTurno(in.readLine());
+		control.start();
 	}
 
 }
