@@ -25,6 +25,7 @@ public class ClienteEcho {
 				System.out.println("echo: " + in.readUTF());
 				System.out.println("texto (pulsa ctrl+z para finalizar: ");
 			}
+			socket.shutdownOutput();
 		} catch (IOException e) {
 			System.out.println("no se pudo establecer la conexión con el servidor");
 		} finally {

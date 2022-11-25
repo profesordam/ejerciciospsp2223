@@ -2,6 +2,7 @@ package unidad3.ejemplos.servidorecho;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -24,6 +25,8 @@ public class AtenderCliente extends Thread {
 				texto = in.readUTF();
 				out.writeUTF(texto);
 			}
+		} catch (EOFException e) {
+			System.out.println("Cliente " + socket.getInetAddress() + " finaliza sesión");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
