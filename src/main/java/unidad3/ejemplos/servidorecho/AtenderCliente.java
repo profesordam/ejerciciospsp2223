@@ -16,19 +16,21 @@ public class AtenderCliente extends Thread {
 	
 	@Override
 	public void run() {
-		System.out.println("Atendiendo cliente: " + socket.getInetAddress());
+		String cliente = socket.getInetAddress().toString();
+		System.out.println("conexión con: " + cliente);
 		try {
 			String texto;
 			DataInputStream in = new DataInputStream(socket.getInputStream());
 			DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 			while (true) {
 				texto = in.readUTF();
+				System.out.println("echo a " + cliente + ": " + texto);
 				out.writeUTF(texto);
 			}
 		} catch (EOFException e) {
-			System.out.println("Cliente " + socket.getInetAddress() + " finaliza sesión");
+			System.out.println(cliente + " finaliza sesión");
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(cliente + ": " + e.getLocalizedMessage());
 		} finally {
 			try {
 				socket.close();
