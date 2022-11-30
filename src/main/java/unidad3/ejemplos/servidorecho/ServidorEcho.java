@@ -11,6 +11,7 @@ public class ServidorEcho {
 		System.out.println("servidor escuchando");
 		while (true) {
 			Socket socket = serverSocket.accept();
+			socket.setSoTimeout(5000);
 			new AtenderCliente(socket).start();
 		}
 	}

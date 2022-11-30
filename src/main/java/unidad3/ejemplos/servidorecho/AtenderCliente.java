@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class AtenderCliente extends Thread {
 
@@ -22,11 +23,11 @@ public class AtenderCliente extends Thread {
 			String texto;
 			DataInputStream in = new DataInputStream(socket.getInputStream());
 			DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-			while (true) {
-				texto = in.readUTF();
-				System.out.println("echo a " + cliente + ": " + texto);
-				out.writeUTF(texto);
-			}
+			texto = in.readUTF();
+			System.out.println("echo a " + cliente + ": " + texto);
+			out.writeUTF(texto);
+		} catch (SocketException e) {
+			System.out.println(e.getLocalizedMessage());
 		} catch (EOFException e) {
 			System.out.println(cliente + " finaliza sesión");
 		} catch (IOException e) {
