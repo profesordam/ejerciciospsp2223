@@ -1,4 +1,4 @@
-package unidad3.ejemplos.servidorecho;
+package unidad3.ejemplos.servidorecho2;
 
 import java.io.IOException;
 import java.net.ServerSocket;

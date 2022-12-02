@@ -1,4 +1,4 @@
-package unidad3.ejemplos.servidorecho;
+package unidad3.ejemplos.servidorecho1;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
