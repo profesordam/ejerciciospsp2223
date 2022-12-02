@@ -8,7 +8,7 @@ public class ServidorEcho {
 
 	public static void main(String[] args) throws IOException {
 		ServerSocket serverSocket = new ServerSocket(5555);
-		System.out.println("servidor escuchando");
+		System.out.println("nuevo servidor escuchando");
 		while (true) {
 			Socket socket = serverSocket.accept();
 			socket.setSoTimeout(5000);

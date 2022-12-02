@@ -25,6 +25,7 @@ public class ClienteEcho {
 				PrintWriter out = new PrintWriter(
 						new DataOutputStream(socket.getOutputStream()));
 				out.println(linea);
+				out.flush();
 				socket.shutdownOutput();
 				System.out.println("echo: " + in.readLine());
 				socket.shutdownOutput();

@@ -30,6 +30,7 @@ public class AtenderCliente extends Thread {
 			texto = in.readLine();
 			System.out.println("echo a " + cliente + ": " + texto);
 			out.println(texto);
+			out.flush();
 		} catch (SocketException e) {
 			System.out.println(e.getLocalizedMessage());
 		} catch (EOFException e) {
